@@ -4,47 +4,23 @@ import { useEffect, useState } from "react";
 import { Product } from "../types/products";
 import axios from "axios";
 import Card from "../components/card";
+import { useProductStore } from "../store/useProductStore";
 
-const LIMIT = 10
 
 function ProductPage(){
-    const [products, setProducts] = useState<Product[]>([])
-    const [page, setPage] = useState(1)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
-    const [hasMore, setHasMore] = useState(true)
-
-    const fetchProducts = async () => {
-        if (loading || !hasMore) return
-
-        setLoading(true)
-        try {
-            const offset = (page - 1) * LIMIT
-            const response = await axios.get<Product[]>('https://api.escuelajs.co/api/v1/products', {
-                params: {
-                    offset,
-                    limit: LIMIT,
-                },
-            })
-
-            setProducts((prev) => [...prev, ...response.data])
-            console.log(products)
-
-            if (response.data.length < LIMIT) {
-                setHasMore(false)
-            } else {
-                setPage((prev) => prev + 1)
-            }
-        } catch (err) {
-            setError('Failed to load products')
-        } finally {
-            setLoading(false)
-        }
-    }
+    const {
+        products,
+        loading,
+        error,
+        hasMore,
+        fetchProducts,
+    } = useProductStore()
 
     useEffect(() => {
-        fetchProducts()
-    }, [])
+        if (products.length === 0) {
+            fetchProducts()
+        }
+    }, [fetchProducts, products.length])
     
     if (error) {
         return <p className="p-6 text-red-500">{error}</p>
