@@ -1,15 +1,15 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import { Product } from "../types/products";
-import axios from "axios";
+import { useEffect } from "react";
 import Card from "../components/card";
 import { useProductStore } from "../store/useProductStore";
 import Link from "next/link";
 import Header from "../components/header";
+import { useRouter } from "next/navigation";
 
 
 function ProductPage(){
+    const router = useRouter()
     const {
         products,
         loading,
@@ -39,7 +39,7 @@ function ProductPage(){
                 {products.map((product) => (
                     <Link 
                         key={product.id}
-                        href={`/products/${product.slug}`}
+                        href={`/products/${product.slug}/${product.id}`}
                         className="hover:scale-105 transition"
                     >
                         <Card product={product} />
