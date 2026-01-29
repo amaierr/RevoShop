@@ -8,17 +8,15 @@ type Props = {
 function Card({ product }: Props){
 
     return <>
-        <Link href={`/products/${product.slug}`}>
-            <div className="border rounded-lg p-6 m-4 hover:scale-105 transition cursor-pointer">
-                <img
-                    src={product.images[0]}
-                    alt={product.title}
-                    className="h-40 w-full object-cover rounded"
-                />
-                <h3 className="mt-2 font-semibold">{product.title}</h3>
-                <p className="text-gray-600">${product.price}</p>
-            </div>
-        </Link>
+        <div className="border rounded-lg p-6 m-4">
+            <img
+                src={product.images[0]}
+                alt={product.title}
+                className="h-40 w-full object-cover rounded"
+            />
+            <h3 className="mt-2 font-semibold">{product.title}</h3>
+            <p className="text-gray-600">${product.price}</p>
+        </div>
     </>
 }
 

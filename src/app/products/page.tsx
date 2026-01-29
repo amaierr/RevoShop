@@ -5,6 +5,8 @@ import { Product } from "../types/products";
 import axios from "axios";
 import Card from "../components/card";
 import { useProductStore } from "../store/useProductStore";
+import Link from "next/link";
+import Header from "../components/header";
 
 
 function ProductPage(){
@@ -27,14 +29,21 @@ function ProductPage(){
     }
 
     return <>
+    <Header title="Products"></Header>
     <div className="flex justify-center">
         <div className="p-6 max-w-11/12">
-            <h1 className="text-2xl font-bold mb-4 text-center">Products</h1>
+            {/* <h1 className="text-2xl font-bold mb-4 text-center">Products</h1> */}
 
             {/* Card grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {products.map((product) => (
-                <Card key={product.id} product={product} />
+                    <Link 
+                        key={product.id}
+                        href={`/products/${product.slug}`}
+                        className="hover:scale-105 transition"
+                    >
+                        <Card product={product} />
+                    </Link>
                 ))}
             </div>
 
