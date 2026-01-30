@@ -22,10 +22,7 @@ async function DetailPage({ params }: PageProps) {
     product = await res.json()
 
     return <>
-      <Header
-        title={slug}
-        showBack
-      ></Header>
+      <Header showBack ></Header>
       <h1 className="text-2xl text-center mx-auto font-bold sm:text-3xl mb-4">{slug}</h1>
 
       <Card product={product} />

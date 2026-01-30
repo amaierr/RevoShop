@@ -3,9 +3,10 @@ import { Product } from "../types/products";
 
 type Props = {
     product: Product
+    titleStyle?: string
 }
 
-function Card({ product }: Props){
+function Card({ product, titleStyle }: Props){
 
     return <>
         <div className="border rounded-lg p-6 m-4">
@@ -14,7 +15,7 @@ function Card({ product }: Props){
                 alt={product.title}
                 className="h-40 w-full object-cover rounded"
             />
-            <h3 className="mt-2 font-semibold">{product.title}</h3>
+            <h3 className={`mt-2 font-semibold ${titleStyle}`}>{product.title}</h3>
             <p className="text-gray-600">${product.price}</p>
         </div>
     </>

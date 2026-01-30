@@ -29,7 +29,7 @@ function ProductPage(){
     }
 
     return <>
-    <Header title="Products"></Header>
+    <Header></Header>
     <div className="flex justify-center">
         <div className="p-6 max-w-11/12">
             <h1 className="text-2xl text-center mx-auto font-bold sm:text-3xl mb-4">Products</h1>
@@ -42,7 +42,7 @@ function ProductPage(){
                         href={`/products/${product.slug}/${product.id}`}
                         className="hover:scale-105 transition"
                     >
-                        <Card product={product} />
+                        <Card product={product} titleStyle="line-clamp-1"/>
                     </Link>
                 ))}
             </div>
@@ -53,7 +53,7 @@ function ProductPage(){
                     <button
                         onClick={fetchProducts}
                         disabled={loading}
-                        className="px-6 py-2 border rounded"
+                        className="px-6 py-2 border rounded cursor-pointer"
                     >
                         {loading ? 'Loading...' : 'Load More'}
                     </button>

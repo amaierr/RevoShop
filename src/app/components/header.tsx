@@ -4,13 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type HeaderProps = {
-  title: string
   showBack?: boolean
   prevPage?: string
 };
 
 function Header({
-  title,
   showBack = false,
 }: HeaderProps) {
   const router = useRouter()

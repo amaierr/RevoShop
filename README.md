@@ -1,38 +1,70 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/2EJ5Xvqu)
+# Revo Shop
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
 
-## Getting Started
+Revo Shop is a front-end e-commerce web application built using **Next.js (App Router)** as part of a **technical assignment**. The project demonstrates the ability to design a scalable front-end architecture for an online shop, including product listing, product detail navigation, state management, and API integration.
 
-First, run the development server:
+The application consumes public REST APIs to simulate real-world product and content data, focusing on clean data fetching, pagination, and predictable client-side state behavior. The project is deployed on Vercel and emphasizes modern React patterns, performance, and maintainability.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features Implemented
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Product Listing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Fetches product data from a public REST API
+* Displays products using a **card-based UI layout**
+* Supports **pagination / load-more behavior** to avoid loading all products at once
+* Optimized for better performance and user experience
 
-## Learn More
+### Product Detail Page
 
-To learn more about Next.js, take a look at the following resources:
+* Clicking on a product card navigates to a **product detail page**
+* Uses dynamic routing with a URL structure like:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```
+  /product/[slug]
+  ```
+* Client-side navigation using Next.js `Link`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### State Management
 
-## Deploy on Vercel
+* Uses **Zustand** for global state management
+* Prevents duplicated product data when navigating between pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### API Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Uses **Axios** for REST API communication
+* Integrates public REST APIs:
+
+  * **Fake Store API**: [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/) (product data)
+  * **JSONPlaceholder**: [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) (static content / FAQ simulation)
+* Handles asynchronous data fetching and error handling cleanly
+
+
+---
+
+## Technologies Used
+
+### Core Framework
+
+* **Next.js** – React framework with App Router for routing, layouts, and data fetching
+
+### Libraries
+
+* **Axios** – HTTP client for REST API requests
+* **Zustand** – Lightweight and scalable state management solution
+
+### Styling
+
+* **Tailwind CSS** – utility-first CSS framework for rapid UI development and consistent styling
+
+### Deployment
+
+* **Vercel** – Hosting and continuous deployment
+
+---
+
+## Website Links
+
+* **Live Website**: [https://revo-shop-pi.vercel.app](https://revo-shop-pi.vercel.app)
